@@ -61,6 +61,13 @@ main{
     grid-area: home;
 }
 
+.card{
+    height: 132px;
+    width: 214px;
+    border-radius: 15px;
+}
+
+
 footer{
     grid-area: footer;
     height: 410px;
@@ -74,6 +81,23 @@ footer .lists{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.logo-footer{
+    display: flex;
+    align-items: center;
+}
+
+footer .copy{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+footer .copy p{
+    font-weight: lighter;
 }
 
 footer .lists label{
