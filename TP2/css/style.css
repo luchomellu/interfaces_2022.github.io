@@ -17,6 +17,12 @@
     margin-right: 7px;
 }
 
+a{
+    font-size: 16px;
+    font-weight: normal;
+    color: #EEE6E6;
+}
+
 .fa-circle-user{
     margin-left: 7px;
 }
@@ -148,7 +154,7 @@ footer .lists{
     justify-content: space-evenly;
 }
 
-.logo-footer{
+footer .lists .logo-footer{
     display: flex;
     align-items: center;
 }
@@ -170,6 +176,17 @@ footer .lists label{
     font-weight: bold;
     color: #EEE6E6;
     border-bottom: 2px dashed #D61C4E;
+    margin-bottom: 10px;
+}
+
+footer .lists .lista-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+footer .lists .lista-footer ul{
+    list-style-position: inside;
 }
 
 header{
@@ -195,3 +212,4 @@ header ul li{
     align-items: center;
 }
 
+/*https://codepen.io/zebateira/pen/zrvwGR*/
