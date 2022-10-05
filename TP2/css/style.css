@@ -54,17 +54,82 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 25px;
     padding-left: 200px;
     padding-right: 200px;
     background: linear-gradient(180deg, rgba(22,33,62,1) 0%, rgba(22,33,62,1) 35%, rgba(0,3,11,1) 100%);
     grid-area: home;
 }
 
+main ul{
+    list-style: none;
+}
+
+.mosaico{
+    margin-top: 20px;
+    display: grid;
+    /*grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 2;
+    grid-gap: 10px;*/ 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 15px 15px; 
+    grid-template-areas: 
+        "m1 m1 m2 m3"
+        "m1 m1 m6 m6"
+        "m4 m5 m6 m6"; 
+}
+
+.m1{
+    grid-area: m1;
+}
+
+.m2{
+    grid-area: m2;
+}
+
+.m3{
+    grid-area: m3;
+}
+
+.m4{
+    grid-area: m4;
+}
+
+.m5{
+    grid-area: m5;
+}
+
+.m6{
+    grid-area: m6;
+}
+
 .card{
     height: 132px;
     width: 214px;
     border-radius: 15px;
+    border: 4.5px solid #3E1F6E;
+}
+
+.card-grande{
+    height: 264px;
+    width: 450px;
+    border-radius: 15px;
+    border: 4.5px solid #3E1F6E;
+}
+
+.card-grande img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius: 10px;
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius: 10px;
 }
 
 
@@ -104,6 +169,7 @@ footer .lists label{
     font-size: 16px;
     font-weight: bold;
     color: #EEE6E6;
+    border-bottom: 2px dashed #D61C4E;
 }
 
 header{
