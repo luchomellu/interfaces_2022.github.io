@@ -3,7 +3,7 @@
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
   }
-  
+
 * {
     margin: 0px;
     padding: 0px;
@@ -28,6 +28,12 @@ a{
 }
 
 i{
+    color: #EEE6E6;
+}
+
+h3{
+    font-size: 16px;
+    font-weight:bold;
     color: #EEE6E6;
 }
 
@@ -111,7 +117,32 @@ main ul{
 }
 
 .track .card{
-    margin-right: 11px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.jugar{
+    width: 78px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #D61C4E;
+    color: #EEE6E6;
+    border-color: #EC6D8F;
+    align-self: flex-end;
+}
+
+.jugar:hover{
+    background-color: #E2456F;
+    box-shadow: 1px 0px 3px 1px #FF94B0;
+}
+
+.jugar:active{
+    background-color: #AD0935;
+    box-shadow:inset 1px 0px 3px 1px #540017;
+}
+
+.fa-star{
+    color: #DAAD0F;
 }
 
 .card{
@@ -121,6 +152,7 @@ main ul{
     border: 4.5px solid #3E1F6E;
     display: flex;
 }
+
 
 .card-grande{
     height: 264px;
@@ -137,14 +169,20 @@ main ul{
 }
 
  .card .content-card{
-    display: flex;
+    display: none;
     position:absolute;
     width: 205px;
     height: 123px;
     border-radius: 10px;
     padding: 10px;
-    background-color: #3E1F6E80;
+    background-color: #3f1f6eb9;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.card:hover .content-card{
+    display: flex;
 }
 
 .card img{
@@ -157,10 +195,13 @@ main ul{
 
 footer{
     grid-area: footer;
-    height: 410px;
+    height: 310px;
+    padding-left: 200px;
+    padding-right: 200px;
     display: flex;
     flex-direction: column;
     background-color: #3E1F6E;
+    z-index: 1;
 }
 
 footer .lists{
@@ -201,19 +242,21 @@ footer .lists .lista-footer{
     justify-content: flex-start;
 }
 
-footer .lists .lista-footer ul{
-    list-style-position: inside;
+footer .lists .lista-footer ul li{
+    color: #EEE6E6;
 }
 
 header{
     padding-left: 40px;
     padding-right: 40px;
-    height: 75px;
+    height: 60px;
     width: 100%;
     grid-area: header;
     position: sticky;
     display: flex;
     background-color: #533483;
+    top: 0;
+    z-index: 1;
 }
 
 header ul{
@@ -228,18 +271,36 @@ header ul li{
     align-items: center;
 }
 
+.nav-menu{
+    position: fixed;
+    top: 60px;
+    left: -500px;
+    width: 350px;
+    height: 100vh;
+    background: linear-gradient(90deg, #3E1F6E 0%, #3E1F6E 35%, #1B043D 100%);
+    transition: .5s;
+    z-index: 1;
+}
+
+.mostrar{
+    left: 0;
+}
+
 /*https://codepen.io/zebateira/pen/zrvwGR*/
 
   .carousel-container {
-    width: 70rem;
-    margin: 50px auto;
+    width: 64rem;
+    margin: 20px auto;
     position: relative;
-    overflow: hidden;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+  }
+  .carousel-container label{
+    margin-bottom: 7px;
   }
   @media (max-width: 768px) {
-    .carousel-container {
-    }
+    
   }
   .inner-carousel {
     width: 100%;
@@ -253,7 +314,7 @@ header ul li{
   }
   .nav button {
     position: absolute;
-    top: 50%;
+    top: 60%;
     transform: translatey(-50%);
     width: 60px;
     height: 60px;
@@ -275,4 +336,6 @@ header ul li{
   .nav .next.hide {
     display: none;
   }
-  
+  .hero img{
+    max-width: 100%;
+  }
