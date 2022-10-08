@@ -1,18 +1,29 @@
-const menu = document.querySelector(".fa-bars");
+const menu = document.querySelector(".hamburguesa");
 const loader = document.querySelector(".loader-wrapper");
+const numero = document.querySelector(".contador");
 
 menu.addEventListener("click", function () {
   document.querySelector(".nav-menu").classList.toggle("mostrar");
+  if(menu.className == "hamburguesa fa-solid fa-3x fa-bars"){
+    menu.className = "hamburguesa fa-solid fa-3x fa-x";
+  }
+  else if(menu.className == "hamburguesa fa-solid fa-3x fa-x"){
+    console.log("entre lo q no anda")
+    menu.className = "hamburguesa fa-solid fa-3x fa-bars";
+  }
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-  //loader.classList.add("loader-hidden");
-  //loader.addEventListener("transitionend", () =>{
-  //  this.document.body.removeChild("loader-wrapper");
-  
+  setTimeout(() => { loader.classList.add("loader-hidden");}, 5000);
+  let progreso = 0;
+  var id = setInterval(contador, 40);
+  function contador() {
+    if(progreso == 100){
+      clearInterval(id);
+    }else{
+      progreso++;
+      numero.innerHTML = progreso  + "%";
+      console.log(progreso);
+    }
+  }
   });
-
-  setTimeout(() => { loader.classList.add("loader-hidden");}, 4000);
-//target.addEventListener('click', () => target.style.opacity = '0');
-// If you want to remove it from the page after the fadeout
-//target.addEventListener('transitionend', () => target.remove());
