@@ -552,7 +552,7 @@ header ul .user{
 
 /*https://codepen.io/zebateira/pen/zrvwGR*/
 
-  .carousel-container {
+  .carrousel-container {
     width: 64rem;
     margin: 20px auto;
     position: relative;
@@ -560,7 +560,7 @@ header ul .user{
     flex-direction: column;
     z-index: 0;
   }
-  .carousel-container label{
+  .carrousel-container label{
     margin-bottom: 7px;
   }
   @media (max-width: 768px) {

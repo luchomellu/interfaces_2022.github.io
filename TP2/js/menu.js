@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }else{
       progreso++;
       numero.innerHTML = progreso  + "%";
-      console.log(progreso);
+      //console.log(progreso);
     }
   }
   });

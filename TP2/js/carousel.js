@@ -1,30 +1,42 @@
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-const carousel = document.querySelector(".carousel-container");
-const track = document.querySelector(".track");
+const carrousels = document.querySelectorAll('.carrousel-container');
 
-let width = carousel.offsetWidth;
-let index = 0;
+carrousels.forEach((carrousel) => {
+  const prev = carrousel.querySelector(".prev");
+  const next = carrousel.querySelector(".next");
+  const track = carrousel.querySelector(".track");
 
-window.addEventListener("resize", function () {
-  width = carousel.offsetWidth;
+  let index = 0;
+  let width = carrousel.offsetWidth;
+  window.addEventListener("resize", function () {
+    width = carrousel.offsetWidth;
+  });
+  next.addEventListener("click", function (e) {
+    e.preventDefault();
+    index = index + 1;
+    prev.classList.add("show");
+    track.style.transform = "translateX("  + index * -width + /*+ -100 + */ "px)";
+    if (track.offsetWidth - index * width < index * width) {
+      next.classList.add("hide");
+    }
+  });
+  prev.addEventListener("click", function () {
+    index = index - 1;
+    next.classList.remove("hide");
+    if (index === 0) {
+      prev.classList.remove("show");
+    }
+    track.style.transform = "translateX(" + index * -width + "px)";
+  });
 });
 
-next.addEventListener("click", function (e) {
-  e.preventDefault();
-  index = index + 1;
-  prev.classList.add("show");
-  track.style.transform = "translateX("  + index * -width + /*+ -100 + */ "px)";
-  if (track.offsetWidth - index * width < index * width) {
-    next.classList.add("hide");
-  }
-});
 
-prev.addEventListener("click", function () {
-  index = index - 1;
-  next.classList.remove("hide");
-  if (index === 0) {
-    prev.classList.remove("show");
-  }
-  track.style.transform = "translateX(" + index * -width + "px)";
-});
+
+
+
+
+
+const numeros = [1,2,3,4,5]
+
+numeros.forEach((numero) => {
+  console.log({numero})
+})
