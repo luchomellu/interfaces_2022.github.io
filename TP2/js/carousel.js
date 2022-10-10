@@ -28,15 +28,3 @@ carrousels.forEach((carrousel) => {
     track.style.transform = "translateX(" + index * -width + "px)";
   });
 });
-
-
-
-
-
-
-
-const numeros = [1,2,3,4,5]
-
-numeros.forEach((numero) => {
-  console.log({numero})
-})

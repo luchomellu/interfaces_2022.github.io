@@ -17,6 +17,27 @@
     margin-right: 7px;
 }
 
+.breadcrum{
+  position: absolute;
+    top: 60px;
+    width: 100%;
+    height: 30px;
+    background-color: #6F529C;
+    z-index: 89;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 3%;
+}
+
+.breadcrum h3{
+  margin-right: 5px;
+}
+
+.breadcrum .fa-caret-right{
+  margin-right: 5px;
+}
+
 .loader-wrapper {
     width: 100%;
     height: 100%;
@@ -224,6 +245,15 @@ main ul{
     color: #EEE6E6;
     border-color: #EC6D8F;
     align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px #EC6D8F;
+    transition: 0.2s ease-in;
+}
+
+.jugar .fa-play{
+  margin-right: 3px;
 }
 
 .jugar:hover{
@@ -257,6 +287,7 @@ main ul{
     color: #EEE6E6;
     border-color: #EC6D8F;
     align-self: flex-end;
+    border: solid 3px #EC6D8F;
 }
 
 .jugar-grande .fa-play{
@@ -274,6 +305,13 @@ main ul{
     border: 4.5px solid #3E1F6E;
     display: flex;
     position: relative;
+}
+
+.card h3{
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card .gratis{
@@ -412,6 +450,11 @@ main ul{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-grande .content-card .info{
@@ -440,7 +483,7 @@ footer{
     display: flex;
     flex-direction: column;
     background-color: #3E1F6E;
-    z-index: 1;
+    z-index: 100;
 }
 
 footer .lists{
@@ -495,7 +538,7 @@ header{
     display: flex;
     background-color: #533483;
     top: 0;
-    z-index: 5;
+    z-index: 100;
 }
 
 header ul{
@@ -518,6 +561,10 @@ header ul .user{
     width: 270.734px;
 }
 
+header ul .user .fa-cart-shopping{
+  margin-right: 8px;
+}
+
 .nav-menu{
     position: fixed;
     top: 60px;
@@ -526,7 +573,7 @@ header ul .user{
     height: 100vh;
     background: linear-gradient(90deg, #3E1F6E 0%, #3E1F6E 35%, #1B043D 100%);
     transition: .5s;
-    z-index: 1;
+    z-index: 99;
     padding-left: 30px;
 }
 
@@ -550,8 +597,6 @@ header ul .user{
     left: 0;
 }
 
-/*https://codepen.io/zebateira/pen/zrvwGR*/
-
   .carrousel-container {
     width: 64rem;
     margin: 20px auto;
@@ -563,9 +608,7 @@ header ul .user{
   .carrousel-container label{
     margin-bottom: 7px;
   }
-  @media (max-width: 768px) {
-    
-  }
+  
   .inner-carousel {
     padding-top: 10px;
     width: 100%;
@@ -576,8 +619,9 @@ header ul .user{
     display: inline-flex;
     height: 100%;
     transition: transform 0.2s ease-in-out;
+   
   }
-  .nav button {
+  .nav a {
     position: absolute;
     top: 60%;
     transform: translatey(-50%);
@@ -585,22 +629,54 @@ header ul .user{
     height: 60px;
     border-radius: 50%;
     outline: none;
-    border: 1px solid #000;
     cursor: pointer;
+    background: linear-gradient(180deg, #3E1F6E 0%, #3E1F6E 35%, #1B043D 100%);;
   }
+
+  .nav a i{
+    color: #D61C4E;
+  }
+
   .nav .prev {
     left: -30px;
     display: none;
   }
   .nav .prev.show {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .nav .next {
     right: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .nav .next.hide {
     display: none;
   }
+
+  .carrousel-container.galeria .inner-carousel img{
+    width: 720px;
+    object-fit: cover;
+    border: 2px solid #D61C4E;
+    border-radius: 15px;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .carrousel-container.galeria {
+    width: 720px;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+  }
+
   .hero{
     position: relative;
     height: auto;
@@ -608,9 +684,21 @@ header ul .user{
     z-index: 1;
     overflow: hidden;
   }
+
+  .hero .negro{
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0)70%, rgb(0 0 0) 100%);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    TOP: 0;
+  }
+
   .hero img.background{
     max-width: 100%;
     z-index: 0; 
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgb(0, 0, 0) 90%);
   }
   .hero img.png{
     position: absolute;
@@ -658,15 +746,35 @@ header ul .user{
     padding: 0%;
     background: #000000;
   }
-  button.preorder{
+  a.preorder{
+    cursor: pointer;
     position: absolute;
     z-index: 1;
     height: 10%;
     width: 20%;
     bottom: 5%;
     left: 40%;
-    background-color: #DAAD0F;
+    background:#43B938;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #EEE6E6;
+    border: solid 2px #16810C;
+    transition: 0.2s ease-in;
   }
+
+  a.preorder:hover{
+    background: #5ccf52;
+  }
+
+  a.preorder:active{
+    background: #16810C;
+    border: solid 2px #073f02;
+  }
+
   .wrapfeature{
     padding-top: 7%;
     width: 60%;
@@ -691,36 +799,51 @@ header ul .user{
     display: flex;
     margin: 5%;
   }
-  .racecard{
-    border-radius: 20px;
-    display: flex;
+  .razas{
+    margin-top: 6%;
     flex-direction: column;
-    width: 30%;
-    margin: 2%;
+    display: flex;
     align-items: center;
   }
-  .racecard img{
-    width: 150%;
+  .racecard{
+    display: flex;
+    border-radius: 20px;
+    min-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+  }
+  .racecont{
+    padding: 6%;
+    display: fle x;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .racecont h2{
+    padding-bottom: 10%;
   }
   .racecardhum{
-    background-color: blue;
+    background: url(../images/humback.jpg);
   }
   .racecardorc{
-    background-color: red;
+    background: url(../images/orcback.jpg);
   }
   .racecardund{
-    background-color: purple;
+    background: url(../images/undback.jpg);
   }
   .racecardelf{
-    background-color: green;
+    background: url(../images/elfback.jpg);
   }
   .espacio-juego{
     display: flex;
     width: 100%;
     flex-direction: column;
+    margin-top: 15px;
   }
 
   .espacio-juego .ejecutable{
+    margin-top: 10px;
     height: 654.6px;
     width: 80%;
     background-color: #000000;
@@ -881,5 +1004,127 @@ header ul .user{
   }
 
 
+  @media (max-width: 480px) {
+    
+    .carrousel-container {
+      width: 450px;
+      margin: 0px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      z-index: 0;
+      margin-bottom: 20px;
+    }
 
+    header ul .menu{
+      width: auto;
+    }
+
+    header ul .user{
+      width: auto;
+    }
+  
+    header ul .user h2{
+      display: none;
+    }
+    footer {
+      grid-area: footer;
+      height: 310px;
+      padding-left: 0px;
+      padding-right: 0px;
+      display: flex;
+      flex-direction: column;
+      background-color: #3E1F6E;
+      z-index: 100;
+    }
+
+    .banner a .content-banner img{
+      max-width: 100%;
+    }
+
+    .banner a .content-banner .logo-wh{
+      margin-right: 10px;
+      width: 50%;
+    }
+    footer .lists .logo-footer {
+      display: none;
+    }
+
+    footer .copy {
+      display: none;
+    }
+
+    .banner a {
+      align-items: center;
+    }
+      .card{
+        max-height: 132px;
+        max-width: 214px;
+        border-radius: 15px;
+        border: 4.5px solid #3E1F6E;
+        display: flex;
+        position: relative;
+    }
+
+    .banner a .content-banner h1{
+      font-size: 30px;
+      left: 30%;
+      top: 50px;
+      font-weight: bolder;
+  }
+
+    .mosaico{
+      display: none;
+    }
+  
+    body{
+      width: 100%;
+    }
+    header{
+      width: 100%;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 25px;
+      padding-left: 0px;
+      padding-right: 0px;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(22,33,62,1) 0%, rgba(22,33,62,1) 35%, rgba(0,3,11,1) 100%);
+      grid-area: home;
+  }
+  .nav a {
+    position: absolute;
+    top: 60%;
+    width: 30px;
+    height: 30px;
+  }
+  .nav .next {
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav .prev {
+    left: -10px;
+    display: none;
+  }
+
+  main h1{
+    display: none;
+  }
+
+  footer .lists {
+    width: 100%;
+  }
+  footer .lists .lista-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
+  }
+  }
 
