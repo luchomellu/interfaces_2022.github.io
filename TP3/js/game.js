@@ -9,13 +9,20 @@ class juego{
     }
 
     jugar(){
-        let turno = "p";
+        let turno = 1;
         let win = false;
         while (win == false){
-            turno = "j";
+            
+            this.cambiaTurno(turno);
         }
     }
 
-
+    cambiaTurno(turno){
+        if (turno == 1){
+            turno = 2;
+        } else {
+            turno =1;
+        }
+    }
 }
 

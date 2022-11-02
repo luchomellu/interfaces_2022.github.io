@@ -1,5 +1,5 @@
 class Tablero{
-    constructor(col, row, win){
+    constructor(col, row){
         this.col = col;
         this.row = row;
         this.win = win;
@@ -17,13 +17,13 @@ class Tablero{
         return tab;
     }
 
-    colocarFicha(col){
+    colocarFicha(col, turno){
         if (this.isFull(col) == false){
             let i = this.row;
             while (tab[i][col] != 0){
                 i--;
             }
-            tab[i][col] = 1;
+            tab[i][col] = turno;
         }
     }
 
@@ -40,8 +40,8 @@ class Tablero{
          // horizontal
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < columns - 3; c++){
-            if (board[r][c] != ' ') {
-                if (board[r][c] == board[r][c+1] && board[r][c+1] == board[r][c+2] && board[r][c+2] == board[r][c+3]) {
+            if (this.tab[r][c] != 0) {
+                if (this.tab[r][c] == this.tab[r][c+1] && this.tab[r][c+1] == this.tab[r][c+2] && this.tab[r][c+2] == this.tab[r][c+3]) {
                     setWinner(r, c);
                     return;
                 }

@@ -5,6 +5,7 @@ class Ficha{
         this.x = x;
         this.y = y;
         this.drawFicha();
+        this.clicked = false;
         console.log("hola")
     }
 
@@ -25,11 +26,18 @@ class Ficha{
         return Math.sqrt(a*a + b*b) <= 15;
     };
 
+    clicked() {
+        this.clicked;
+    }
+
+    setClicked(clicked) {
+        this.clicked = clicked;
+    }
+
     mover(x,y){
-        console.log("pene");
+        //console.log("pene");
         this.x = x;
         this.y = y;
-        this.drawFicha();
     }
 
 }
