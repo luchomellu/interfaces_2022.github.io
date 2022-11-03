@@ -35,7 +35,6 @@ class Ficha{
     }
 
     mover(x,y){
-        //console.log("pene");
         this.x = x;
         this.y = y;
     }

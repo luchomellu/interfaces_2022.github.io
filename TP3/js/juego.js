@@ -1,3 +1,4 @@
+
 let canvas = document.querySelector('#juego');
 let ctx = canvas.getContext('2d');
 let canvasW = canvas.width;
@@ -60,6 +61,28 @@ class Juego{
         }
     }
 
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+window.onload = function() {
+  modal.style.display = "block";
+}
+
+let btn = document.querySelector("#iniciar");
+btn.addEventListener("click", crearjuego);
+
+function crearjuego(){
+    event.preventDefault();
+    modal.style.display = "none";
+    let tamanio = document.querySelector("#tamanio").value;
+    console.log(tamanio);
+    //let ficha = document.querySelector("ficha").value;
 }
 
 const juego = new Juego();
