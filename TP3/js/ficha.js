@@ -1,23 +1,19 @@
 class Ficha{
-    constructor(element,jugador,x,y){
+    constructor(element,jugador,x,y,imgSrc){
         this.ctx = element;
         this.jugador = jugador;
         this.x = x;
         this.y = y;
-        this.drawFicha();
+        //this.img = new Image();
+        //this.img.src = imgSrc;
+        this.img = imgSrc;
         this.clicked = false;
+        this.drawFicha();
         console.log("hola")
     }
 
     drawFicha(){
-        var gradient = ctx.createLinearGradient(0, 0, 170, 0);
-        gradient.addColorStop("0", "magenta");
-        gradient.addColorStop("0.5" ,"blue");
-        gradient.addColorStop("1.0", "red");
-        this,ctx.beginPath();
-        this.ctx.arc(this.x, this.y, 15, 0, 2 * Math.PI);
-        this.ctx.fillStyle = gradient;
-        this.ctx.fill();
+        this.ctx.drawImage(this.img, this.x -15, this.y-15, 30, 30);
     }
 
     isClicked(x,y){
