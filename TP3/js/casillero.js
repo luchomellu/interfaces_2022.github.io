@@ -4,6 +4,7 @@ class Casillero{
         this.x = x;
         this.y = y;
         this.img = imagen;
+        this.ficha = null;
         this.drawCasillero();
     }
 
@@ -17,5 +18,9 @@ class Casillero{
 
     setFicha(Ficha){
         this.ficha = Ficha;
+    }
+
+    tieneFicha(){
+        return this.ficha;
     }
 }

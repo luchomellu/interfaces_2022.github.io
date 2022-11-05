@@ -2,6 +2,8 @@ class Ficha{
     constructor(element,jugador,x,y,imgSrc){
         this.ctx = element;
         this.jugador = jugador;
+        this.xOrigen = x;
+        this.yOrigen = y;
         this.x = x;
         this.y = y;
         //this.img = new Image();
@@ -9,6 +11,11 @@ class Ficha{
         this.img = imgSrc;
         this.clickeado = false;
         this.drawFicha();
+    }
+
+    moverOrigen(){
+        this.x = this.xOrigen;
+        this.y = this.yOrigen;
     }
 
     drawFicha(){

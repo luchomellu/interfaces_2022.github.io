@@ -18,6 +18,7 @@ ctx.stroke();
 class Juego{
     fichas = [];
     constructor(tamanio,fichaJugador1,fichaJugador2,imagenCasillero){
+        this.tamanio = tamanio;
         this.tablero = new Tablero(ctx,tamanio,imagenCasillero);
         this.jugador1 = new Jugador("Jugador 1");
         this.jugador2= new Jugador("Jugador 2");
@@ -27,10 +28,35 @@ class Juego{
     }
 
     crearFichas(){
-        for (let index = 0; index < 21; index++) {
-            this.fichas.push(new Ficha(ctx,this.jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,this.fichaJugador1));
-            this.fichas.push(new Ficha(ctx,this.jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,this.fichaJugador2));
+        switch (this.tamanio != null) {
+            case (this.tamanio == 4):
+                for (let index = 0; index < 21; index++) {
+                    this.fichas.push(new Ficha(ctx,this.jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,this.fichaJugador1));
+                    this.fichas.push(new Ficha(ctx,this.jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,this.fichaJugador2));
+                }
+                break;
+            case (this.tamanio == 5):
+                for (let index = 0; index < 28; index++) {
+                    this.fichas.push(new Ficha(ctx,this.jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,this.fichaJugador1));
+                    this.fichas.push(new Ficha(ctx,this.jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,this.fichaJugador2));
+                }
+                break;
+            case (this.tamanio == 6):
+                for (let index = 0; index < 36; index++) {
+                    this.fichas.push(new Ficha(ctx,this.jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,this.fichaJugador1));
+                    this.fichas.push(new Ficha(ctx,this.jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,this.fichaJugador2));
+                }
+                break;
+            case (this.tamanio == 7):
+                for (let index = 0; index < 45; index++) {
+                    this.fichas.push(new Ficha(ctx,this.jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,this.fichaJugador1));
+                    this.fichas.push(new Ficha(ctx,this.jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,this.fichaJugador2));
+                }
+                break;
+            default:
+                break;
         }
+        
     }
 
     isClicked(x,y){
@@ -43,10 +69,23 @@ class Juego{
         }
     }
 
-    unsetClicked(){
+    unsetClicked(x,y){
         for (let index = 0; index < this.fichas.length; index++) {
             let element = this.fichas[index];
             if(element.clicked()){
+                if(this.tablero.checkPosValida(x,y)){
+                    let col = this.tablero.getCol(x,y)
+                    if(!this.tablero.isFull(col)){
+                        alert("colocao");
+                    }
+                    else{
+                        element.moverOrigen();
+                        this.limpiar();
+                    }
+                }else{
+                    element.moverOrigen();
+                    this.limpiar();
+                }
                 element.setClicked(false);
             };
         }
@@ -63,7 +102,7 @@ class Juego{
     }
 
     limpiar(){
-        //ctx.rect(0,0,canvas.width,canvas.height);
+        ctx.rect(0,0,canvas.width,canvas.height);
         ctx.fillStyle = "#FFFFFF";
         ctx.fill();
         this.tablero.drawTablero();
@@ -140,7 +179,9 @@ canvas.addEventListener('mousemove', function mover(e){
 });
 
 canvas.addEventListener('mouseup', function levantar(e){
+    let x = Math.round(e.layerX - canvas.offsetLeft);
+    let y = Math.round(e.layerY - canvas.offsetTop);
     dibujar = false;
-    juego.unsetClicked();
+    juego.unsetClicked(x,y);
 
 });
