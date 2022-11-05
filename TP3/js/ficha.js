@@ -7,9 +7,8 @@ class Ficha{
         //this.img = new Image();
         //this.img.src = imgSrc;
         this.img = imgSrc;
-        this.clicked = false;
+        this.clickeado = false;
         this.drawFicha();
-        console.log("hola")
     }
 
     drawFicha(){
@@ -20,14 +19,14 @@ class Ficha{
         let a = this.x - x;
         let b = this.y - y;
         return Math.sqrt(a*a + b*b) <= 15;
-    };
-
-    clicked() {
-        this.clicked;
     }
 
-    setClicked(clicked) {
-        this.clicked = clicked;
+    clicked() {
+        return this.clickeado;
+    }
+
+    setClicked(boolean){
+        this.clickeado = boolean;
     }
 
     mover(x,y){

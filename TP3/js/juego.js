@@ -5,6 +5,10 @@ let canvasW = canvas.width;
 let canvasH = canvas.height;
 let dibujar = false;
 
+var imagenCasillero = new Image();
+imagenCasillero.onload = function(){return};
+imagenCasillero.src = "./images/casillero.jpg";
+
 ctx.beginPath();
 ctx.rect(0,0,canvas.width,canvas.height);
 ctx.fillStyle = "#FFFFFF";
@@ -13,26 +17,25 @@ ctx.stroke();
 
 class Juego{
     fichas = [];
-    constructor(tamanio,fichaJugador1,fichaJugador2){
-        let tablero = new Tablero(ctx,tamanio);
-        let jugador1 = new Jugador("Jugador 1");
+    constructor(tamanio,fichaJugador1,fichaJugador2,imagenCasillero){
+        this.tablero = new Tablero(ctx,tamanio,imagenCasillero);
+        this.jugador1 = new Jugador("Jugador 1");
+        this.jugador2= new Jugador("Jugador 2");
+        this.fichaJugador1 = fichaJugador1;
+        this.fichaJugador2 = fichaJugador2;
+        this.crearFichas();
+    }
 
+    crearFichas(){
         for (let index = 0; index < 21; index++) {
-            this.fichas.push(new Ficha(ctx,jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,fichaJugador1));
-            //console.log(this.fichas);
+            this.fichas.push(new Ficha(ctx,this.jugador1,Math.random() * (100-50) + 50,Math.random() * (400-50) + 50,this.fichaJugador1));
+            this.fichas.push(new Ficha(ctx,this.jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,this.fichaJugador2));
         }
-        
-        let jugador2 = new Jugador("Jugador 2");
-        for (let index = 0; index < 21; index++) {
-            this.fichas.push(new Ficha(ctx,jugador2,Math.random() * (870-820) + 820,Math.random() * (400-50) + 50,fichaJugador2));
-            //console.log(this.fichas);
-        }
-        
     }
 
     isClicked(x,y){
         for (let index = 0; index < this.fichas.length; index++) {
-            const element = this.fichas[index];
+            let element = this.fichas[index];
             if(element.isClicked(x,y)){
                 element.setClicked(true);
                 return true;
@@ -42,8 +45,8 @@ class Juego{
 
     unsetClicked(){
         for (let index = 0; index < this.fichas.length; index++) {
-            const element = this.fichas[index];
-            if(element.clicked){
+            let element = this.fichas[index];
+            if(element.clicked()){
                 element.setClicked(false);
             };
         }
@@ -51,8 +54,8 @@ class Juego{
 
     moveClicked(x,y){
         for (let index = 0; index < this.fichas.length; index++) {
-            const element = this.fichas[index];
-            if(element.clicked){
+            let element = this.fichas[index];
+            if(element.clicked()){
                 element.mover(x,y);
                 return;
             };
@@ -60,10 +63,10 @@ class Juego{
     }
 
     limpiar(){
-        ctx.rect(0,0,canvas.width,canvas.height);
+        //ctx.rect(0,0,canvas.width,canvas.height);
         ctx.fillStyle = "#FFFFFF";
         ctx.fill();
-        console.log("hola");
+        this.tablero.drawTablero();
         for (let index = 0; index < this.fichas.length; index++) {
             this.fichas[index].drawFicha();
         }
@@ -114,7 +117,7 @@ function crearjuego(){
     }
     let imgJugador1 = new Image();
     imgJugador1.onload = function() {
-        juego = new Juego(tamanio,imgJugador1,imgJugador2);
+        juego = new Juego(tamanio,imgJugador1,imgJugador2,imagenCasillero);
     }
     imgJugador1.src = fichaJugador1;
 
@@ -123,7 +126,6 @@ function crearjuego(){
 canvas.addEventListener('mousedown', function check(e){
     let x = Math.round(e.layerX - canvas.offsetLeft);
     let y = Math.round(e.layerY - canvas.offsetTop);
-    console.log(juego);
     if(juego.isClicked(x,y)){
         dibujar = true;
     };
@@ -137,7 +139,8 @@ canvas.addEventListener('mousemove', function mover(e){
     juego.limpiar();
 });
 
-canvas.addEventListener('mouseup', function mover(e){
+canvas.addEventListener('mouseup', function levantar(e){
     dibujar = false;
     juego.unsetClicked();
+
 });

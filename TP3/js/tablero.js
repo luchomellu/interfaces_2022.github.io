@@ -1,5 +1,9 @@
 class Tablero{
-    constructor(ctx,numero){
+    constructor(ctx,numero,imagenCasillero){
+        //this.imagenCasillero = new Image();
+        //this.imagenCasillero.onload = function(){return};
+        //this.imagenCasillero.src = "./images/casillero.jpg";
+        this.imagenCasillero = imagenCasillero;
         this.ctx = ctx;
         this.numero = numero;
         console.log(this.numero);
@@ -41,7 +45,7 @@ class Tablero{
             for (let j = 0; j < this.col; j++) {
                 let x = xOrigen + (j*35);
                 console.log(x);
-                tab[i][j] = new Casillero(ctx,x,y);
+                tab[i][j] = new Casillero(ctx,x,y,this.imagenCasillero);
             }
         }
         //this.drawTablero();
@@ -131,16 +135,14 @@ class Tablero{
         }
     }
 
-    /*
+    
     drawTablero(){
-        
-        for (let index = 0; index < row; index++) {
-            for (let index = 0; index < array.col; index++) {
-                
-                
+        for (let i = 0; i < this.row; i++) {
+            for (let j = 0; j < this.col; j++) {
+                this.tab[i][j].drawCasillero();
             }
-            
         }
     }
-    */
+    
+    
 }
