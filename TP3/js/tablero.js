@@ -108,7 +108,7 @@ class Tablero{
         //diagonales
         for (r = 4; r < rows; r++){
             let cont = 1;
-            for (c = 0; c < r-1; c++ ) 
+            for (c = 0; c < r; c++ ) 
             while (tope == false){
                if (tab[r-c][c].ficha == tab[r-c-1][c+1].ficha){
                 cont++
@@ -120,18 +120,22 @@ class Tablero{
                }
             }
         }
-        for (c = 1; c < col; c++ ){
+        /*parparpa
+        for (c = 1; c < cols; c++){
+            let index = rows-1;
             let cont = 1;
-            if (tab[rows-col][c].ficha == tab[rows-col-1][col+1]){
-                cont++
-            } else {
-                cont = 1; 
-            }
-            if (cont = numero){
-                return ganador;
+            for (c = 0; c < col; c++ ){
+                if (tab[index-col][c].ficha == tab[rows-col-1][col+1]){
+                    cont++
+                } else {
+                    cont = 1; 
+                }
+                if (cont = numero){
+                    return ganador;
+                }
             }
         }
-
+        */
         // anti diagonal
         for (r = 4; r < rows; r++){//hola
             let cont = 1;
