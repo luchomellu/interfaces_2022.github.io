@@ -16,11 +16,20 @@ class Casillero{
         this.ctx.drawImage(this.img, this.x -15, this.y-15, 35, 35);
     }
 
+    getX(){
+        return this.x;
+    }
+
+    getY(){
+        return this.y;
+    }
+
     setFicha(Ficha){
         this.ficha = Ficha;
+        this.ficha.mover(this.x+3,this.y+3);
     }
 
     tieneFicha(){
-        return this.ficha;
+        return this.ficha != null;
     }
 }

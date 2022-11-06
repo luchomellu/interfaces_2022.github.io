@@ -1050,17 +1050,21 @@ header ul .user .fa-cart-shopping{
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(180deg, #543780 0%, #3E1F6E 50%, #1B043D 100%);
     margin-top: 5%; /* 15% from the top and centered */
     margin-left: 20%;
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid #1B043D;
     width: 60%; /* Could be more or less, depending on screen size */
     height: 60%;
+    border-radius: 15px;
   }
 
   .modal-content h1{
-    color: #000000;
+    color: #EEE6E6;
   }
 
   /* HIDE RADIO */

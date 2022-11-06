@@ -5,26 +5,49 @@ let canvasW = canvas.width;
 let canvasH = canvas.height;
 let dibujar = false;
 
+var imagenBackground = new Image();
+imagenBackground.onload = function(){return};
+imagenBackground.src = "./images/pokemon-4-fila.jpg";
+
 var imagenCasillero = new Image();
 imagenCasillero.onload = function(){return};
 imagenCasillero.src = "./images/casillero.jpg";
 
-ctx.beginPath();
-ctx.rect(0,0,canvas.width,canvas.height);
-ctx.fillStyle = "#FFFFFF";
-ctx.fill();
-ctx.stroke();
+//ctx.beginPath();
+//ctx.rect(0,0,canvas.width,canvas.height);
+//ctx.fillStyle = "hsla(45, 44%, 0%, 0.64)";
+//ctx.fill();
+ctx.drawImage(imagenBackground, 0, 0, canvasW, canvasH);
+//ctx.stroke();
 
 class Juego{
     fichas = [];
     constructor(tamanio,fichaJugador1,fichaJugador2,imagenCasillero){
+        this.dibujarInterfaz();
         this.tamanio = tamanio;
         this.tablero = new Tablero(ctx,tamanio,imagenCasillero);
         this.jugador1 = new Jugador("Jugador 1");
         this.jugador2= new Jugador("Jugador 2");
         this.fichaJugador1 = fichaJugador1;
         this.fichaJugador2 = fichaJugador2;
+        this.turno = this.jugador1;
         this.crearFichas();
+    }
+
+    dibujarInterfaz(){
+        ctx.drawImage(imagenBackground, 0, 0, canvasW, canvasH);
+        
+        ctx.beginPath();
+        ctx.rect(30,30,120,410);
+        ctx.rect(780,30,120,410);
+        ctx.fillStyle = "rgba(0, 0, 0, 0.64)";
+        ctx.fill();
+
+        ctx.font = "22px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("Jugador 1", 90, 25);
+        ctx.fillText("Jugador 2", 840, 25);
     }
 
     crearFichas(){
@@ -62,7 +85,7 @@ class Juego{
     isClicked(x,y){
         for (let index = 0; index < this.fichas.length; index++) {
             let element = this.fichas[index];
-            if(element.isClicked(x,y)){
+            if(element.isClicked(x,y) && element.getJugador() == this.turno){
                 element.setClicked(true);
                 return true;
             };
@@ -75,8 +98,9 @@ class Juego{
             if(element.clicked()){
                 if(this.tablero.checkPosValida(x,y)){
                     let col = this.tablero.getCol(x,y)
-                    if(!this.tablero.isFull(col)){
-                        alert("colocao");
+                    if(this.tablero.colocarFicha(col,element)){
+                        this.limpiar();
+                        this.cambiarTurno();
                     }
                     else{
                         element.moverOrigen();
@@ -102,24 +126,28 @@ class Juego{
     }
 
     limpiar(){
-        ctx.rect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle = "#FFFFFF";
-        ctx.fill();
+        this.dibujarInterfaz();
         this.tablero.drawTablero();
         for (let index = 0; index < this.fichas.length; index++) {
             this.fichas[index].drawFicha();
         }
     }
 
+    cambiarTurno(){
+        if(this.turno == this.jugador1){
+            this.turno = this.jugador2
+        }
+        else{
+            this.turno = this.jugador1
+        }
+    }
+
 }
 
-// Get the modal
+// Get modal
 var modal = document.getElementById("myModal");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
+// Mostrar modal
 window.onload = function() {
   modal.style.display = "block";
 }

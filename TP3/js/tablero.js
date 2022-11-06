@@ -1,8 +1,5 @@
 class Tablero{
     constructor(ctx,numero,imagenCasillero){
-        //this.imagenCasillero = new Image();
-        //this.imagenCasillero.onload = function(){return};
-        //this.imagenCasillero.src = "./images/casillero.jpg";
         this.imagenCasillero = imagenCasillero;
         this.ctx = ctx;
         this.numero = numero;
@@ -27,9 +24,6 @@ class Tablero{
             default:
                 break;
         }
-        
-        //this.col = 14;
-        //this.row = 13;
         //this.win = win;
         this.tab = this.setTablero();
     }
@@ -57,18 +51,25 @@ class Tablero{
 
     colocarFicha(col, ficha){
         if (this.isFull(col) == false){
-            let i = this.row + 1;
-            while ((this.tab[i][col].tieneFicha() != null)&&(i != 0)){
-                i--;
+            let i = 1;
+            while ((this.tab[i][col].tieneFicha() == false) && (i < this.row)){
+                i++;
             }
-            tab[i][col].setFicha(ficha);
-            return true;
+            if((this.tab[i][col].tieneFicha() == true)){
+                this.tab[i - 1][col].setFicha(ficha);
+                console.log(i - 1);
+                return true;
+            }else{
+                this.tab[i][col].setFicha(ficha);
+                console.log(i);
+                return true;
+            }
         }
         return false;
     }
 
     isFull(col){
-        if (this.tab[1][col].tieneFicha() == null){
+        if (this.tab[1][col].tieneFicha() == false){
             return false;
         } else {
             return true;
@@ -104,7 +105,7 @@ class Tablero{
                 }
             }
         }
-
+        //diagonales
         for (r = 4; r < rows; r++){
             let cont = 1;
             for (c = 0; c < r-1; c++ ) 
@@ -118,42 +119,44 @@ class Tablero{
                 return ganador;
                }
             }
-        /*for (c = 1; c < col; c++ ){
-            let cont = 1;
-            for (r = ){
-                if (tab[rows-1-c][c].ficha == tab[rows-1-c-1][c+1]){
-                    cont++
-                } else {
-                    cont = 1; LEE BIEN Y TESTEA, TIENE SENTIDO MIRA FOTO
-                }
-                if (cont = numero){
-                    return ganador;
-                }
-            }
         }
-        */
+        for (c = 1; c < col; c++ ){
+            let cont = 1;
+            if (tab[rows-col][c].ficha == tab[rows-col-1][col+1]){
+                cont++
+            } else {
+                cont = 1; 
+            }
+            if (cont = numero){
+                return ganador;
+            }
         }
 
         // anti diagonal
-        for (let r = 0; r < rows - 3; r++) {
-            for (let c = 0; c < columns - 3; c++) {
-                if (board[r][c] != ' ') {
-                    if (board[r][c] == board[r+1][c+1] && board[r+1][c+1] == board[r+2][c+2] && board[r+2][c+2] == board[r+3][c+3]) {
-                        setWinner(r, c);
-                        return;
-                    }
-                }
+        for (r = 4; r < rows; r++){//hola
+            let cont = 1;
+            for (c = 0; c < r-1; c++ ) 
+            while (tope == false){
+               if (tab[r-c][c].ficha == tab[r-c-1][c+1].ficha){
+                cont++
+               } else {
+                cont = 1;
+               }
+               if (cont = numero){
+                return ganador;
+               }
             }
         }
-
-        // diagonal
-        for (let r = 3; r < rows; r++) {
-            for (let c = 0; c < columns - 3; c++) {
-                if (board[r][c] != ' ') {
-                    if (board[r][c] == board[r-1][c+1] && board[r-1][c+1] == board[r-2][c+2] && board[r-2][c+2] == board[r-3][c+3]) {
-                        setWinner(r, c);
-                        return;
-                    }
+        for (c = 1; c < col; c++ ){
+            let cont = 1;
+            for (col = c; col < row-1; col++){
+                if (tab[rows-col][c].ficha == tab[rows-c-1][c+1]){
+                    cont++
+                } else {
+                    cont = 1; 
+                }
+                if (cont = numero){
+                    return ganador;
                 }
             }
         }

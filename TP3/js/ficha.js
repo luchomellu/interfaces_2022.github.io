@@ -13,6 +13,10 @@ class Ficha{
         this.drawFicha();
     }
 
+    getJugador(){
+        return this.jugador;
+    }
+
     moverOrigen(){
         this.x = this.xOrigen;
         this.y = this.yOrigen;
