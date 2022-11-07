@@ -24,7 +24,6 @@ class Tablero{
             default:
                 break;
         }
-        //this.win = win;
         this.tab = this.setTablero();
     }
 
@@ -145,7 +144,6 @@ class Tablero{
             //YA FUNCIONA NO TOCAR
         }
         
-        // top-left to bottom-right - red diagonals
         for (let colStart = 1; colStart < this.col - 3; colStart++){
             let count = 0;
             let r;
@@ -187,7 +185,6 @@ class Tablero{
             }
         }
 
-        // top-left to bottom-right - red diagonals
         for (let colStart = this.col-2; colStart > 2; colStart--){
             let count = 0;
             let r;

@@ -15,8 +15,6 @@ var imagenCasillero = new Image();
 imagenCasillero.onload = function(){return};
 imagenCasillero.src = "./images/casillero.jpg";
 
-//ctx.drawImage(imagenBackground, 0, 0, canvasW, canvasH);
-
 class Juego{
     fichas = [];
     intervalId = null;
