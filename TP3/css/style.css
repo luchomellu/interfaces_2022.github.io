@@ -1036,7 +1036,8 @@ header ul .user .fa-cart-shopping{
   }
 
   .modal {
-    display: none; /* Hidden by default */
+    display: flex;
+    justify-content: center;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -1070,17 +1071,32 @@ header ul .user .fa-cart-shopping{
     flex-direction: column;
     align-items: center;
     background: linear-gradient(180deg, #543780 0%, #3E1F6E 50%, #1B043D 100%);
-    margin-top: 5%; /* 15% from the top and centered */
-    margin-left: 20%;
+    align-self: flex-start;
+    margin-top: 100px; 
     padding: 20px;
     border: 2px solid #1B043D;
-    width: 60%; /* Could be more or less, depending on screen size */
-    height: 60%;
+    width: 920px; /* Could be more or less, depending on screen size */
+    height: 500px;
     border-radius: 15px;
   }
 
   .modal-content h1{
     color: #EEE6E6;
+  }
+
+  .modal-content #iniciar{
+    width: 108px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #D61C4E;
+    color: #EEE6E6;
+    border-color: #EC6D8F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px #EC6D8F;
+    transition: 0.2s ease-in;
+    cursor: pointer;
   }
 
   .modal-content form{
@@ -1135,8 +1151,8 @@ header ul .user .fa-cart-shopping{
 
   /* CHECKED STYLES */
   .modal-content [type=radio]:checked + img {
-    filter: drop-shadow(2px 2px 0 rgb(31, 30, 30)) 
-          drop-shadow(-2px -2px 0 rgb(31, 30, 30));
+    filter: drop-shadow(3px 3px 0 rgb(29, 28, 28)) 
+          drop-shadow(-3px -3px 0 rgb(29, 28, 28));
   }
   
   /* The Close Button */

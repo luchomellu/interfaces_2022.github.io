@@ -6,11 +6,18 @@ class Ficha{
         this.yOrigen = y;
         this.x = x;
         this.y = y;
-        //this.img = new Image();
-        //this.img.src = imgSrc;
         this.img = imgSrc;
         this.clickeado = false;
+        this.colocado = false;
         this.drawFicha();
+    }
+
+    setColocado(){
+        this.colocado = true;
+    }
+
+    isColocado(){
+        return this.colocado;
     }
 
     getJugador(){

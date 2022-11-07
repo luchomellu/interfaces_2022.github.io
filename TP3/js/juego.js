@@ -14,18 +14,13 @@ var imagenCasillero = new Image();
 imagenCasillero.onload = function(){return};
 imagenCasillero.src = "./images/casillero.jpg";
 
-//ctx.beginPath();
-//ctx.rect(0,0,canvas.width,canvas.height);
-//ctx.fillStyle = "hsla(45, 44%, 0%, 0.64)";
-//ctx.fill();
 ctx.drawImage(imagenBackground, 0, 0, canvasW, canvasH);
-//ctx.stroke();
 
 class Juego{
     fichas = [];
     intervalId = null;
     constructor(tamanio,fichaJugador1,fichaJugador2,imagenCasillero){
-        this.tiempo = 10;
+        this.tiempo = 300;
         this.jugador1 = new Jugador("Jugador 1");
         this.jugador2= new Jugador("Jugador 2");
         this.turno = this.jugador1;
@@ -35,7 +30,6 @@ class Juego{
             if(this.tiempo == 0){
                 this.endGame();
             }
-            console.log(this.tiempo);
         }, 1000);
         this.dibujarInterfaz();
         this.tamanio = tamanio;
@@ -47,8 +41,22 @@ class Juego{
 
     endGame(){
         clearInterval(this.intervalId);
-        modal.style.display = "block";
-        msgTiempo.style.display = "block";
+        modal.style.display = "flex";
+        if(this.tiempo <= 0){
+            msgTiempo.style.display = "block";
+        }
+        else if(this.tablero.isAllFull()){
+            msgEmpate.style.display = "block";
+        }
+        else{
+            if(this.turno.getNombre() == "Jugador 1"){
+                msgGano1.style.display = "block";
+            }
+            else{
+                msgGano2.style.display = "block";
+            }
+        }
+        
     }
 
     dibujarTimer(){
@@ -63,7 +71,7 @@ class Juego{
         ctx.drawImage(imagenBackground, 0, 0, canvasW, canvasH);
         
         ctx.beginPath();
-        ctx.rect(30,30,120,410);
+        ctx.rect(20,30,120,410);
         ctx.rect(780,30,120,410);
         ctx.fillStyle = "rgba(0, 0, 0, 0.64)";
         ctx.fill();
@@ -71,10 +79,10 @@ class Juego{
         ctx.font = "22px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText("Jugador 1", 90, 25);
+        ctx.fillText("Jugador 1", 80, 25);
         ctx.fillText("Jugador 2", 840, 25);
         ctx.fillText("Tiempo Restante: " + this.tiempo, 460, 25);
-        ctx.fillText("Turno de: " + this.turno.getNombre(), 460, 45);
+        ctx.fillText("Turno de: " + this.turno.getNombre(), 460, 50);
     }
 
     crearFichas(){
@@ -112,7 +120,7 @@ class Juego{
     isClicked(x,y){
         for (let index = 0; index < this.fichas.length; index++) {
             let element = this.fichas[index];
-            if(element.isClicked(x,y) && element.getJugador() == this.turno){
+            if(element.isClicked(x,y) && element.getJugador() == this.turno && element.isColocado() == false){
                 element.setClicked(true);
                 return true;
             };
@@ -126,9 +134,16 @@ class Juego{
                 if(this.tablero.checkPosValida(x,y)){
                     let col = this.tablero.getCol(x,y)
                     if(this.tablero.colocarFicha(col,element)){
+                        element.setColocado();
+                        if(this.tablero.isAllFull()){
+                            this.endGame();
+                        }
                         this.limpiar();
-                        
-                        this.cambiarTurno();
+                        if(this.tablero.checkWin(this.turno.getNombre()) == true){
+                            this.endGame();
+                        }else{
+                            this.cambiarTurno();
+                        }
                     }
                     else{
                         element.moverOrigen();
@@ -164,21 +179,26 @@ class Juego{
     cambiarTurno(){
         if(this.turno == this.jugador1){
             this.turno = this.jugador2
+            this.limpiar();
         }
         else{
             this.turno = this.jugador1
+            this.limpiar();
         }
     }
 
 }
 
 // Get modal
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
 let msgTiempo = document.getElementById("tiempo");
+let msgEmpate = document.getElementById("empate");
+let msgGano1 = document.getElementById("gano1");
+let msgGano2 = document.getElementById("gano2");
 
 // Mostrar modal
 window.onload = function() {
-  modal.style.display = "block";
+  modal.style.display = "flex";
 }
 
 let btn = document.querySelector("#iniciar");
@@ -189,6 +209,10 @@ var juego;
 function crearjuego(){
     event.preventDefault();
     modal.style.display = "none";
+    msgTiempo.style.display = "none";
+    msgEmpate.style.display = "none";
+    msgGano1.style.display = "none";
+    msgGano2.style.display = "none";
     let tamanio = document.querySelector("#tamanio").value;
     console.log(tamanio);
     

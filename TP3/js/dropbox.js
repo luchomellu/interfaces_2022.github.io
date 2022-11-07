@@ -7,9 +7,17 @@ class DropBox{
     }
 
     drawDropBox(){
+        var grd = ctx.createLinearGradient(0,this.y+15, 0,this.y-15);
+        grd.addColorStop(0, "white");
+        grd.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+        // Fill with gradient
+        this.ctx.fillStyle = grd;
         this.ctx.beginPath();
         this.ctx.rect(this.x-15,this.y-15,35,35);
+        this.ctx.strokeStyle = "rgba(66, 166, 214, 0.89)";
         this.ctx.stroke();
+        this.ctx.fill();
     }
 
     checkPos(x,y){

@@ -29,6 +29,10 @@ class Casillero{
         this.ficha.mover(this.x+3,this.y+3);
     }
 
+    getFicha(){
+        return this.ficha;
+    }
+
     tieneFicha(){
         return this.ficha != null;
     }

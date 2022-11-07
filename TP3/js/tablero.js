@@ -3,7 +3,6 @@ class Tablero{
         this.imagenCasillero = imagenCasillero;
         this.ctx = ctx;
         this.numero = numero;
-        console.log(this.numero);
         switch (this.numero != null) {
             case (this.numero == 4):
                 this.col = 7;
@@ -29,8 +28,8 @@ class Tablero{
     }
 
     setTablero(){
-        let xOrigen = 460 - ((35*this.col)/2);
-        let yOrigen = 240 - ((35*(this.row + 1))/2);
+        let xOrigen = 475 - ((35*this.col)/2);
+        let yOrigen = 255 - ((35*(this.row + 1))/2);
         let tab = new Array(this.row + 1);
         for (let i = 0; i < this.row + 1; i++) {
             let y = yOrigen + (i*35);
@@ -57,11 +56,9 @@ class Tablero{
             }
             if((this.tab[i][col].tieneFicha() == true)){
                 this.tab[i - 1][col].setFicha(ficha);
-                console.log(i - 1);
                 return true;
             }else{
                 this.tab[i][col].setFicha(ficha);
-                console.log(i);
                 return true;
             }
         }
@@ -76,94 +73,143 @@ class Tablero{
         }
     }
 
-    checkWin(){
+    isAllFull(){
+        for (let index = 0; index < this.col; index++) {
+            if (this.tab[1][index].tieneFicha() == false){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    checkWin(nombre){
          // horizontal
-        for (let r = row-1; r < 0 ; r--){
+        for (let r = this.row; r > 0 ; r--){
             let cont = 1;
-            for (let c = 0; c < col-2; c++){
-                if (tab[r][c].ficha == tab[r][c+1].ficha){
-                    cont++;
-                } else {
-                    cont = 1;
+            for (let c = 0; c < this.col-1; c++){
+                if(this.tab[r][c].getFicha() != null && this.tab[r][c+1].getFicha() != null){
+                    if (this.tab[r][c].getFicha().getJugador() == this.tab[r][c+1].getFicha().getJugador()){
+                        cont++;
+                    } else {
+                        cont = 1;
+                    }
+                    if (cont == this.numero){
+                        return true;
+                    }
                 }
-                if (cont = numero){
-                    return ganador;
+                else{
+                    cont = 1;
                 }
             }
         }
         // vertical
-        for (let c = 0; c < col ; c--){
+        for (let c = 0; c < this.col ; c++){
             let cont = 1;
-            for (let r = row-1; r < 1; r++){
-                if (tab[r][c].ficha == tab[r+1][c].ficha){
-                    cont++;
-                } else {
-                    cont = 1;
+            for (let r = this.row; r > 1; r--){
+                if(this.tab[r][c].getFicha() != null && this.tab[r-1][c].getFicha() != null){
+                    if (this.tab[r][c].getFicha().getJugador() == this.tab[r-1][c].getFicha().getJugador()){
+                        cont++;
+                    } else {
+                        cont = 1;
+                    }
+                    if (cont == this.numero){
+                        console.log("gano alguien")
+                        return true;
+                    }
                 }
-                if (cont = numero){
-                    return ganador;
+                else{
+                    cont = 1;
                 }
             }
         }
         //diagonales
-        for (r = 4; r < rows; r++){
-            let cont = 1;
-            for (c = 0; c < r; c++ ) 
-            while (tope == false){
-               if (tab[r-c][c].ficha == tab[r-c-1][c+1].ficha){
-                cont++
-               } else {
-                cont = 1;
-               }
-               if (cont = numero){
-                return ganador;
-               }
-            }
-        }
-        /*parparpa
-        for (c = 1; c < cols; c++){
-            let index = rows-1;
-            let cont = 1;
-            for (c = 0; c < col; c++ ){
-                if (tab[index-col][c].ficha == tab[rows-col-1][col+1]){
-                    cont++
-                } else {
-                    cont = 1; 
+        
+        for (let rowStart = 1; rowStart < this.row - 2; rowStart++){
+            let count = 0;
+            let r;
+            let c;
+            for (r = rowStart, c = 0; r <= this.row && c < this.col; r++, c++ ){
+                if(this.tab[r][c].getFicha() != null){
+                    if (this.tab[r][c].getFicha().getJugador().getNombre() == nombre){
+                        count++;
+                        if (count >= this.numero) return true;
+                    }
+                    else {
+                        count = 0;
+                    }
                 }
-                if (cont = numero){
-                    return ganador;
+                else{
+                    count = 0;
                 }
             }
+            //YA FUNCIONA NO TOCAR
         }
-        */
+        
+        // top-left to bottom-right - red diagonals
+        for (let colStart = 1; colStart < this.col - 3; colStart++){
+            let count = 0;
+            let r;
+            let c;
+            for (r = 1, c = colStart; r < this.row + 1 && c < this.col; r++, c++ ){
+                if(this.tab[r][c].getFicha() != null){
+                    if(this.tab[r][c].getFicha().getJugador().getNombre() == nombre){
+                        count++;
+                        if(count >= this.numero) return true;
+                    }
+                    else {
+                        count = 0;
+                    }
+                }
+                else{
+                    count = 0;
+                }
+            }
+            //FUNCIONA NO TOCAR
+        }
+        
         // anti diagonal
-        for (r = 4; r < rows; r++){//hola
-            let cont = 1;
-            for (c = 0; c < r-1; c++ ) 
-            while (tope == false){
-               if (tab[r-c][c].ficha == tab[r-c-1][c+1].ficha){
-                cont++
-               } else {
-                cont = 1;
-               }
-               if (cont = numero){
-                return ganador;
-               }
-            }
-        }
-        for (c = 1; c < col; c++ ){
-            let cont = 1;
-            for (col = c; col < row-1; col++){
-                if (tab[rows-col][c].ficha == tab[rows-c-1][c+1]){
-                    cont++
+        for (let rowStart = 1; rowStart < this.row - 1; rowStart++){
+            let count = 0;
+            let r;
+            let c;
+            for (r = rowStart, c = this.col-1; r < this.row + 1&& c >= 0; r++, c--){
+                if(this.tab[r][c].getFicha() != null){
+                    if (this.tab[r][c].getFicha().getJugador().getNombre() == nombre){
+                        count++;
+                        if (count >= this.numero) return true;
+                    }
+                    else {
+                        count = 0;
+                    }
                 } else {
-                    cont = 1; 
-                }
-                if (cont = numero){
-                    return ganador;
+                    count = 0;
                 }
             }
         }
+
+        // top-left to bottom-right - red diagonals
+        for (let colStart = this.col-2; colStart > 2; colStart--){
+            let count = 0;
+            let r;
+            let c;
+            for (r = 1, c = colStart; r < this.row+1 && c >= 0; r++, c--){
+                console.log("check anti-diagonal roja: " +r+","+c)
+                if(this.tab[r][c].getFicha() != null){
+                    if(this.tab[r][c].getFicha().getJugador().getNombre() == nombre){
+                        count++;
+                        console.log(count);
+                        if(count >= this.numero) return true;
+                    }
+                    else {
+                        count = 0;
+                    }
+                } else {
+                    count = 0;
+                }
+            }
+        }
+        
+        return false;
     }
 
     
