@@ -13,15 +13,15 @@ class Ficha{
     }
 
     setColocado(){
-        this.colocado = true;
+        this.colocado = true;//seteo que la ficha fue colocada
     }
 
     isColocado(){
-        return this.colocado;
+        return this.colocado;//devuelvo si esta colocada
     }
 
     getJugador(){
-        return this.jugador;
+        return this.jugador;//devuelvo jugador de la ficha
     }
 
     moverOrigen(){
@@ -30,21 +30,21 @@ class Ficha{
     }
 
     drawFicha(){
-        this.ctx.drawImage(this.img, this.x -15, this.y-15, 30, 30);
+        this.ctx.drawImage(this.img, this.x -15, this.y-15, 30, 30);//dibujo la ficha(-15 px para que este centrado)
     }
 
     isClicked(x,y){
         let a = this.x - x;
         let b = this.y - y;
-        return Math.sqrt(a*a + b*b) <= 15;
+        return Math.sqrt(a*a + b*b) <= 15;//devuelvo si el click fue dentro de la ficha
     }
 
     clicked() {
-        return this.clickeado;
+        return this.clickeado;//devuelvo si esta clickeada
     }
 
     setClicked(boolean){
-        this.clickeado = boolean;
+        this.clickeado = boolean;//seteo si esta clickeado o no
     }
 
     mover(x,y){

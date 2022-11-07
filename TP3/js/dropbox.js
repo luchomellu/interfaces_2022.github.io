@@ -7,11 +7,10 @@ class DropBox{
     }
 
     drawDropBox(){
-        var grd = ctx.createLinearGradient(0,this.y+15, 0,this.y-15);
+        var grd = ctx.createLinearGradient(0,this.y+15, 0,this.y-15);//gradiente
         grd.addColorStop(0, "white");
         grd.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-        // Fill with gradient
         this.ctx.fillStyle = grd;
         this.ctx.beginPath();
         this.ctx.rect(this.x-15,this.y-15,35,35);
@@ -21,6 +20,6 @@ class DropBox{
     }
 
     checkPos(x,y){
-        return (((x > this.x - 15) && (x < this.x + 15))&&((y > this.y - 15) && (y < this.y + 15)))
+        return (((x > this.x - 15) && (x < this.x + 15))&&((y > this.y - 15) && (y < this.y + 15)));//checkeo que las x e y que me mandan esten dentro de el dropbox
     }
 }

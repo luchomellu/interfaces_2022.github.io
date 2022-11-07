@@ -9,11 +9,7 @@ class Casillero{
     }
 
     drawCasillero(){
-        //ctx.beginPath();
-        //ctx.rect(this.x,this.y,35,35);
-        //ctx.stroke();
-        //console.log(this.img);
-        this.ctx.drawImage(this.img, this.x -15, this.y-15, 35, 35);
+        this.ctx.drawImage(this.img, this.x -15, this.y-15, 35, 35);//dibujo la ficha corrido 15 px para los dos lados, asi queda centrado
     }
 
     getX(){
@@ -26,7 +22,7 @@ class Casillero{
 
     setFicha(Ficha){
         this.ficha = Ficha;
-        this.ficha.mover(this.x+3,this.y+3);
+        this.ficha.mover(this.x+3,this.y+3);//cuando coloco la ficha la muevo para el casillero (los +3 es para que quede centrado)
     }
 
     getFicha(){
@@ -34,6 +30,6 @@ class Casillero{
     }
 
     tieneFicha(){
-        return this.ficha != null;
+        return this.ficha != null;//checkeo que el casillero tenga una ficha
     }
 }
