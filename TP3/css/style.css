@@ -1047,6 +1047,22 @@ header ul .user .fa-cart-shopping{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
+
+  .modal-content #empate{
+    display: none;
+  }
+
+  .modal-content #tiempo{
+    display: none;
+  }
+
+  .modal-content #gano1{
+    display: none;
+  }
+
+  .modal-content #gano2{
+    display: none;
+  }
   
   /* Modal Content/Box */
   .modal-content {
