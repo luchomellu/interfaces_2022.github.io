@@ -56,16 +56,18 @@
   display: flex;
   bottom: 50px;
   right: 50px;
-  width: 198px;
-  height: 210px;
+  width: 80px;
+  height: 150px;
   background-image: url("https://i.cloudup.com/q3ZLPB9kVH.png");
+  background-size: 640px;
+  background-repeat: no-repeat;
   z-index: 999;
   animation: play 0.8s steps(8) infinite;
 }
 
 @keyframes play {
   from { background-position:    0px; }
-    to { background-position: -1584px; }
+    to { background-position: -640px; }
 }
 
 .loader-wrapper {
