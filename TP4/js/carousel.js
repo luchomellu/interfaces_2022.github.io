@@ -15,6 +15,8 @@ carrousels.forEach((carrousel) => {
     index = index + 1;
     prev.classList.add("show");
     track.style.transform = "translateX("  + index * -width + /*+ -100 + */ "px)";
+    document.querySelectorAll(".racecard").classList.add("img-anim");
+    //document.querySelector(".racecard").classList.remove("img-anim");
     if (track.offsetWidth - index * width < index * width) {
       next.classList.add("hide");
     }
@@ -26,5 +28,7 @@ carrousels.forEach((carrousel) => {
       prev.classList.remove("show");
     }
     track.style.transform = "translateX(" + index * -width + "px)";
+    document.querySelectorAll(".racecard").classList.add("img-anim");
+    //document.querySelector(".racecard").classList.remove("img-anim");
   });
 });
