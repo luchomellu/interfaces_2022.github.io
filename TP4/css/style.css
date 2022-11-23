@@ -30,6 +30,16 @@
     padding-left: 3%;
 }
 
+.reveal{
+  transform: translateY(-150px);
+  opacity: 0;
+}
+
+.reveal.active{
+  transform: translateY(0px);
+  opacity: 1;
+}
+
 .breadcrum h3{
   margin-right: 5px;
 }
