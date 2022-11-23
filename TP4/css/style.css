@@ -30,14 +30,89 @@
     padding-left: 3%;
 }
 
+.slider {
+  width: 920px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  border-radius: 5px;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+  overflow: hidden;
+}
+
+.slides > div {
+  flex-shrink: 0;
+  width: 920px;
+  border-radius: 10px;
+  transform-origin: center;
+  transform: scale(1);
+  transition: transform 1.5s;
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slides img{
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.slider > a {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+.slides > div:target {
+  transform: scale(0.8);
+}
+
+.slider > a:focus {
+  background: #000;
+}
 .reveal{
-  transform: translateY(-150px);
-  opacity: 0;
+  animation: slide-out 0.3s both;
+}
+
+@keyframes slide-out {
+  0%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100%{
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
 }
 
 .reveal.active{
-  transform: translateY(0px);
-  opacity: 1;
+  animation: slide-in 0.3s both;
+}
+
+@keyframes slide-in {
+  0%{
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 
 .breadcrum h3{
@@ -890,7 +965,7 @@ header ul .user .fa-cart-shopping{
     TOP: 0;
   }
 
-  .hero img.background{
+  .hero .background{
     max-width: 100%;
     z-index: 0; 
     background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgb(0, 0, 0) 90%);
@@ -1032,7 +1107,7 @@ header ul .user .fa-cart-shopping{
   .racecard{
     display: flex;
     border-radius: 20px;
-    width: 1200px;
+    width: 1000px;
     /*margin-left: 100px;
     margin-right: 100px;*/
     margin-top: 2%;
