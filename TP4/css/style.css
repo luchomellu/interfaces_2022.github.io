@@ -1002,19 +1002,22 @@ header ul .user .fa-cart-shopping{
   }
 
   .image-placeholder{
-    display: block;
+    display: flex;
     position: sticky;
-    background-color: #540017;
-    height: 50px;
-    width: 100%;;
-    top: 50%;
+    height: 100vh;
+    width: 80%;;
+    top: 5%;
+    align-items: center;
+  }
+
+  .image-placeholder img{
+    width: 600px;
   }
 
   .wrapfeature{
     padding-top: 7%;
     width: 100%;
     text-align: center;
-    background-color: #568e45a0;
     height: 100vh;
     display: flex;
     flex-direction: column;

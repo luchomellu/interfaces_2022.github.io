@@ -17,24 +17,31 @@ function reveal(){
     }
 
     let features = document.querySelectorAll('.wrapfeature');
-    let img = document.querySelector('.image-placeholder');
-    console.log(features);
+    let img = document.querySelector('.img-feature');
     let current;
     for (let i = 0; i < features.length; i++) {
         let windowHeight = window.innerHeight;
         let revealTop = features[i].getBoundingClientRect().top;
+        let revealBottom = features[i].getBoundingClientRect().bottom;
         let revealPoint = 0.5;
 
-        if(revealTop < windowHeight * revealPoint){
-            features[i].style.backgroundColor = "red";
-            console.log("image " + i)
-        }
-        else{
-            features[i].style.backgroundColor = "blue";
+        if(revealTop < windowHeight * revealPoint && revealBottom > windowHeight * revealPoint){
+            if(current != i){
+                assignImg(i);
+            }
         }
     }
 
     function assignImg(i){
         current = i;
+        if(i == 0){
+            img.src = "./images/feature1.png";
+        }
+        else if(i == 1){
+            img.src = "./images/feature2.png";
+        }
+        else if(i == 2){
+            img.src = "./images/feature3.png";
+        }
     }
 }
