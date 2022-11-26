@@ -1,6 +1,24 @@
 window.addEventListener('scroll',reveal);
 
 function reveal(){
+    let value = window.scrollY;
+    let mistl = document.querySelector('.mistl');
+    let mistr = document.querySelector('.mistr');
+    let dwarf = document.querySelector('.dwarf');
+    let orc = document.querySelector('.orc');
+    let piedra1 = document.querySelector('.piedra1');
+    let piedra2 = document.querySelector('.piedra2');
+    let titulo = document.querySelector('.title');
+    titulo.style.opacity = `${100 - (value * 0.3)}%`;
+    piedra1.style.transform = `translateX(-${value * 0.001}%)`;
+    piedra2.style.transform = `translateX(${value * 0.004}%)`;
+    mistl.style.transform = `translateY(${value * 0.04}%)`;
+    mistr.style.transform = `translateY(${value * 0.05}%)`;
+    dwarf.style.transform = `translateX(-${value * 0.009}%)`;
+    orc.style.transform = `translateX(${value * 0.009}%)`;
+
+
+
     let reveals = document.querySelectorAll('.reveal');
 
     for(let i = 0; i < reveals.length; i ++){
