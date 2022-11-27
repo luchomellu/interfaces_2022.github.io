@@ -4,12 +4,15 @@ function scrollFunction() {
   if (document.body.scrollTop > 35 || document.documentElement.scrollTop > 35) {
     document.getElementById("header").style.height = "50px";
     document.getElementById("logo").style.fontSize = "13px";
+    document.querySelector(".fa-circle-user").style.fontSize = "32px";
+    document.querySelector(".username").style.display = "none";
   } else {
     document.getElementById("header").style.height = "60px";
     document.getElementById("logo").style.fontSize = "16px";
+    document.querySelector(".fa-circle-user").style.fontSize = "36px";
+    document.querySelector(".username").style.display = "flex";
   }
 }
-
 
 const menu = document.querySelector(".menu");
 const l1 = document.querySelector(".l1");

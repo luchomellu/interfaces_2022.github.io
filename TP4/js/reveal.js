@@ -9,7 +9,9 @@ function reveal(){
     let piedra1 = document.querySelector('.piedra1');
     let piedra2 = document.querySelector('.piedra2');
     let titulo = document.querySelector('.title');
+    let preorder = document.querySelector('.preorder');
     titulo.style.opacity = `${100 - (value * 0.3)}%`;
+    preorder.style.opacity = `${100 - (value * 0.02)}%`;
     piedra1.style.transform = `translateX(-${value * 0.001}%)`;
     piedra2.style.transform = `translateX(${value * 0.004}%)`;
     mistl.style.transform = `translateY(${value * 0.04}%)`;
@@ -58,7 +60,6 @@ function reveal(){
     let revealPoint = 1;
     
     if(revealTop < windowHeight * revealPoint && (container.getBoundingClientRect().top - windowHeight / 2) > 0){
-        console.log((revealTop - windowHeight / 2) * 0.1);
         countdown.style.transform = `translateY(${revealTop - windowHeight / 2}%)`;
         countdown.style.opacity = `${100 - (revealTop - windowHeight / 2) * 0.5}%`;
         headline.style.transform = `translateY(-${container.getBoundingClientRect().top - windowHeight / 2}%)`;
@@ -89,17 +90,17 @@ release = 12 + "/" + 25 + "/" + 2022;
 today = 11 + "/" + 24 + "/" + 2022;
 
 const countDown = new Date(release).getTime(),
-    x = setInterval(function() {    
+x = setInterval(function() {    
 
-        const now = new Date().getTime(),
-            distance = countDown - now;
+    const now = new Date().getTime(),
+        distance = countDown - now;
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+    document.getElementById("days").innerText = Math.floor(distance / (day)),
+    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+    document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+    document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
-        if (distance < 0) {
-        clearInterval(x);
-        }
-    }, 0)
+    if (distance < 0) {
+    clearInterval(x);
+    }
+}, 0)
