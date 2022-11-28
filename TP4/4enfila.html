@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/dd2f13833b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="header">
+        <ul>
+            <li class="menu">
+                <span class="l1"></span>
+                <span class="l2"></span>
+                <span class="l3"></span>
+            </li>
+            <a href="./index.html">
+                <li id="logo">
+                    <i class="fa-solid fa-rocket fa-3x"></i>
+                    <h1>Juegardos.com</h1>
+                </li>
+            </a>
+            <li class="user">
+                <h2>Davooxeneize</h2>
+                <i class="fa-solid fa-circle-user fa-3x"></i>
+            </li>
+        </ul>
+    </header>
+    <div class="breadcrum">
+        <h3>Home</h3>
+        <i class="fa-solid fa-caret-right fa-2x"></i>
+        <h3>Categorias</h3>
+        <i class="fa-solid fa-caret-right fa-2x"></i>
+        <h3>Puzzle</h3>
+        <i class="fa-solid fa-caret-right fa-2x"></i>
+        <h3>Pokemon 4 en Fila</h3>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><i class="fa-solid fa-house fa-lg"></i><h2>Home</h2></li>
+            <li><i class="fa-solid fa-list fa-lg"></i><h2>Categorias</h2></li>
+            <li><i class="fa-solid fa-user fa-lg"></i><h2>Perfil</h2></li>
+            <li><i class="fa-solid fa-cart-shopping fa-lg"></i><h2>Carrito</h2></li>
+            <li><i class="fa-solid fa-box fa-lg"></i><h2>Mis juegos</h2></li>
+            <li><i class="fa-solid fa-right-from-bracket fa-lg"></i><h2>Logout</h2></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="espacio-juego">
+            <h1>4 en fila: Pokemon Edition</h1>
+            <canvas id="juego" width="920px" height="480px"></canvas>
+        </div>
+        <div class="carrousel-container galeria">
+            <label for="">
+                <h1>Galeria Imagenes</h1>
+            </label>
+            <div class="inner-carousel">
+              <div class="track">
+                <img src="./images/galeria-1.jpg" alt="">
+                <img src="./images/galeria-2.jpg" alt="">
+                <img src="./images/galeria-3.jpg" alt="">
+              </div>
+              <div class="nav">
+                <a class="prev"><i class="fa-solid fa-chevron-left fa-2xl"></i></a>
+                <a class="next"><i class="fa-solid fa-chevron-right fa-2xl"></i></a>
+              </div>
+            </div>
+        </div>
+        <div class="contenido">
+            <div class="comentarios">
+                <h2>Escribe tu reseña 4 En Fila: Pokemon Edition</h2>
+                <div class="caja-comentario">
+                    <div class="foto-usuario">
+                        <img src="./images/nikita.jpg" alt="">
+                    </div>
+                    <div class="comentar">
+                        <textarea></textarea>
+                        <div>
+                            <div>
+                                <h3>Califica este juego!</h3>
+                                <div class="estrellas">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <a class="jugar">Publicar</a>
+                        </div>
+                    </div>
+                </div>
+                <h2>Comentarios</h2>
+                <div class="comentario">
+                    <div class="foto-perfil">
+                        <img src="./images/a.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="usuario-comentario">
+                            <p>Kanye</p>
+                            <div class="estrellas">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>El mejor 4 en linea de toda la web!</p>
+                    </div>
+                </div>
+                <div class="comentario">
+                    <div class="foto-perfil">
+                        <img src="./images/ibai.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="usuario-comentario">
+                            <p>Ibai</p>
+                            <div class="estrellas">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>Chavales mañana stream de 4 en linea</p>
+                    </div>
+                </div>
+                <div class="comentario">
+                    <div class="foto-perfil">
+                        <img src="./images/male-karen.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="usuario-comentario">
+                            <p>Roberto</p>
+                            <div class="estrellas">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>El videojuego murio, hace mínimo, 20 años. Crecí jugando al Pong, Donkey Kong, Mario Bros, Contra, Mortal Kombat, Crash Bandicoot, Age of Empire, Fallout 1, Doom, entre tantos otros .. me apena tanto cuando escucho hablar a los jóvenes de skins y jugar lo que juegan.</p>
+                    </div>
+                </div>
+                <div class="comentario">
+                    <div class="foto-perfil">
+                        <img src="./images/chad.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="usuario-comentario">
+                            <p>lulu589380</p>
+                            <div class="estrellas">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>di tu nombre tres veces toca la pared pon esto en dos juegos y luego debajo del teclado saldra dinero es real</p>
+                    </div>
+                </div>
+                <div class="comentario">
+                    <div class="foto-perfil">
+                        <img src="./images/el-baby.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="usuario-comentario">
+                            <p>Baby Etchecopar</p>
+                            <div class="estrellas">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>ESTOS LACRAS NO LEVANTAN LA PALA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="instrucciones">
+                <h2>Instrucciones</h2>
+                <div class="paso-1">
+                    <h2>Paso 1</h2>
+                    <img src="./images/paso1.png" alt="">
+                    <h3>Selecciona la columna en la que quieres colocar tu ficha</h3>
+                </div>
+                <div class="paso-2">
+                    <h2>Paso 2</h2>
+                    <img src="./images/paso2.png" alt="">
+                    <h3>¡Planea tus movimientos con anticipación e interrumpe a tu oponente!</h3>
+                </div>
+                <div class="paso-3">
+                    <h2>Paso 3</h2>
+                    <img src="./images/paso3.png" alt="">
+                    <h3>¡Alinea 4 fichas consecutivas en vertical, horizontal o diagonal para ganar!</h3>
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h1 id="tiempo">¡Se termino el tiempo!</h1>
+                <h1 id="empate">¡Empate!</h1>
+                <h1 id="gano1">¡Gano jugador 1!</h1>
+                <h1 id="gano2">¡Gano jugador 2!</h1>
+              <form action="" id="form">
+                <label for="tamanio">
+                    <h1>Ingrese tamanio del tablero</h1>
+                </label>
+                <div class="select-box">
+                    <select id="tamanio" name="tamanio">
+                        <option value="4">Conecta 4</option>
+                        <option value="5">Conecta 5</option>
+                        <option value="6">Conecta 6</option>
+                        <option value="7">Conecta 7</option>
+                    </select>
+                </div>
+                <h2>Seleccionar ficha Jugador 1</h2>
+                <div class="selectFichas">
+                    <label for="ficha2Jugador1">
+                        <input type="radio" id="ficha2Jugador1" name="fichaJugador1" value="./images/ficha2.png" required="required">
+                        <img src="./images/ficha2.png" alt="ficha agua papa" width="80px">
+                    </label>
+                    <label for="ficha3Jugador1">
+                        <input type="radio" id="ficha3Jugador1" name="fichaJugador1" value="./images/ficha3.png" required="required">
+                        <img src="./images/ficha3.png" alt="ficha agua papa" width="80px">
+                    </label>
+                    <label for="ficha4Jugador1">
+                        <input type="radio" id="ficha4Jugador1" name="fichaJugador1" value="./images/ficha4.png" required="required">
+                        <img src="./images/ficha4.png" alt="ficha agua papa" width="80px">
+                    </label>
+                </div>
+                <h2>Seleccionar ficha Jugador 2</h2>
+                <div class="selectFichas">
+                    <label for="ficha2Jugador2">
+                        <input type="radio" id="ficha2Jugador2" name="fichaJugador2" value="./images/ficha5.png" required="required">
+                        <img src="./images/ficha5.png" alt="ficha agua papa" width="80px">
+                    </label>
+                    <label for="ficha3Jugador2">
+                        <input type="radio" id="ficha3Jugador2" name="fichaJugador2" value="./images/ficha6.png" required="required">
+                        <img src="./images/ficha6.png" alt="ficha agua papa" width="80px">
+                    </label>
+                    <label for="ficha4Jugador2">
+                        <input type="radio" id="ficha4Jugador2" name="fichaJugador2" value="./images/ficha7.png" required="required">
+                        <img src="./images/ficha7.png" alt="ficha agua papa" width="80px">
+                    </label>
+                </div>
+                <button type="submit" id="iniciar">Iniciar Juego</button>
+            </form>
+            </div>
+          
+        </div>
+    </main>
+    <footer>
+        <div class="lists">
+            <div class="logo-footer">
+                <i class="fa-solid fa-rocket fa-3x"></i>
+                <h1>Juegardos.com</h1>
+            </div>
+            <div class="lista-footer">
+                <label for="">Navegacion</label>
+                <ul>
+                    <li>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li>
+                        <p>Perfil</p>
+                    </li>
+                    <li><p>Carrito</p></li>
+                    <li><p>Privacidad y seguridad</p></li>
+                    <li><a href="./novedades.html">Novedades</a></li>
+                    <li><p>FAQ</p></li>
+                </ul>
+            </div>
+            <div class="lista-footer">
+                <label for="">Redes</label>
+                <ul>
+                    <li><p>Instagram</p></li>
+                    <li><p>Facebook</p></li>
+                    <li><p>Twitter</p></li>
+                </ul>
+            </div>
+            <div class="lista-footer">
+                <label for="">Legal</label>
+                <ul>
+                    <li><p>Informacion legal</p></li>
+                    <li><p>Ley 12982.1213</p></li>
+                    <li><p>Reglamento</p></li>
+                </ul>
+            </div>
+            <div class="lista-footer">
+                <label for="">Ayuda</label>
+                <ul>
+                    <li><p>Como comprar</p></li>
+                    <li><p>Como jugar</p></li>
+                    <li><p>Como crear una cuenta</p></li>
+                    <li><p>Soporte</p></li>
+                    <li><p>Contactanos</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">
+            <p>Copyright © 2022 by davooxeize</p>
+            <p>All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law. For permission requests, write to the publisher, addressed “Attention: Permissions Coordinator,” at the address below.</p>
+        </div>
+        
+    </footer>
+    <script src="./js/menu.js"></script>
+    <script src="./js/jugador.js"></script>
+    <script src="./js/dropbox.js"></script>
+    <script src="./js/casillero.js"></script>
+    <script src="./js/tablero.js"></script>
+    <script src="./js/ficha.js"></script>
+    <script src="./js/juego.js"></script>
+    <script src="./js/carousel.js"></script>
+</body>
